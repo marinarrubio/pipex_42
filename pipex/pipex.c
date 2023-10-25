@@ -6,7 +6,7 @@
 /*   By: marubio- <marubio-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 18:09:52 by marubio-          #+#    #+#             */
-/*   Updated: 2023/10/24 12:11:19 by marubio-         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:45:23 by marubio-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	run_command(char *cmd, char **envp)
 
 	cmds = ft_split(cmd, ' ');
 	if (!ft_strncmp(cmds[0], "./", 2) || !ft_strncmp(cmds[0], "../", 3)
-		|| cmds[0][0] == '/')
+		|| cmds[0][0] == '/' || (access(cmd, F_OK) == 0))
 			path = cmds[0];
 	else
 		path = get_path_from_envp(*cmds, envp);
